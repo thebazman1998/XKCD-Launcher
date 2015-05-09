@@ -1,0 +1,43 @@
+import sys
+import webbrowser
+
+try:
+    current_comic = open('config.txt', 'r+')
+    
+except IOError:
+    current_comic = open('config.txt', 'w')
+
+try:
+    current = current_comic.readline()
+
+except IOError:
+    temp = input('Do you want to read the first comic?\n>>> ')
+    
+    if 'y' in temp.lower():
+        comic = '1'
+    
+    elif 'n' in temp.lower():
+        comic = input('Which comic do you want to open?\n>>> ')
+    
+    else:
+        print('This is not a valid answer. Please answer with Yes or No.')
+    
+temp = input('Do you want to open comic ' + current + '?\n>>> ')
+
+if 'y' in temp.lower():
+    comic = current
+
+elif 'n' in temp.lower():
+    comic = input('Which comic would you like to open?\n>>> ')
+
+else:
+    print('This is not a valid answer. Please answer with Yes or No.')
+
+webbrowser.open('http://xkcd.com/' + comic + '/')
+
+comic = input('What comic did you finish on?\n>>> ')
+
+current_comic.close()
+current_comic = open('config.txt', 'w')
+current_comic.write(comic)
+current_comic.close()
