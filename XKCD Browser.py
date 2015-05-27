@@ -42,12 +42,12 @@ else:
     #Rewrites text file with comic for next time
     current_comic.close()
     current_comic = open('config.txt', 'w')
-    current_comic.write(str(comic + 1))
+    current_comic.write(comic + 1)
         
 comic = int(input('What comic did you finish on?\n>>> ')) #Asks for ending comic
 
 #Rewrites text file with comic for next time
 current_comic.close()
 current_comic = open('config.txt', 'w')
-current_comic.write(str(comic + 1))
+current_comic.write(comic + 1)
 current_comic.close()
